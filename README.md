@@ -8,4 +8,4 @@ English Version:
  1) Converts black-white images to a digital matrix as a digital image outline
  2) Second part is a recognition system. Hopfield network model.
 
-PHP (OOP): PHP7, HTML5.
+PHP (OOP): PHP7, HTML5, CSS3.
