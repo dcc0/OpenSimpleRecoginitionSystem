@@ -1,0 +1,51 @@
+body {
+	font-size: 14pt; font-family: Verdana, Helvetica, Arial, Tahoma, sans-serif;
+    color: #000;
+    background-color: #F5F5F5;
+}
+
+
+A:link {
+font-size: 14pt;
+	font-weight: normal;
+	color: #000;
+	text-decoration: none;
+}
+
+
+a:visited {
+	color: #000; 
+	text-decoration: none;
+         font-weight: normal;
+}
+
+a:active {
+	font-weight: normal;
+	color: #333;
+	text-decoration: none;
+}
+a:hover {
+font-weight: bold;
+text-decoration: none;
+}
+
+.sender {
+    font-weight: normal;
+}    
+
+.tabl {
+width: 80%;
+background: #333;
+opacity: .78;
+margin:0 auto;
+}
+   
+
+   
+.forma {
+width: 80%;
+background: #333;
+opacity: .78;
+margin:0 auto;        
+}
+   
