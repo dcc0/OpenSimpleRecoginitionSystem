@@ -26,9 +26,21 @@ require_once	'form.html';
 	
 	
 	/*Преобразование изображений*/	
-	/*Изображение в формате png. Должно быть обязательно чёрно-белым. 
+	/*Изображение в формате png или jpg. Должно быть обязательно чёрно-белым. 
 	 *Выделяемая область должна бать чёрной */
+	
+	/*Определяем формат изображения*/
+	if (preg_match("/\.jpg/", $image))  { 
+	$my_image = imagecreatefromjpeg("$image");
+	}
+	
+	if (preg_match("/\.png/", $image))  { 
 	$my_image = imagecreatefrompng("$image");
+	}
+	
+	if (preg_match("/\.gif/", $image))  { 
+	$my_image = imagecreatefromgif("$image");
+	}
 	
 	/*Высота и ширина образца и искомого вектора*/
 	$widthMyImg = imagesx($my_image);
