@@ -1,8 +1,8 @@
 <?php
 
-require_once  	'classes/Class_Convert_Image_To_01.php';
-require_once	'classes/Class_Hopfield_Network_Matrix.php';
-require_once	'form.html';
+	require_once  	'classes/Class_Convert_Image_To_01.php';
+	require_once	'classes/Class_Hopfield_Network_Matrix.php';
+	require_once	'form.html';
 
 
 	$img_dir = 'img'; //путь к изображениям
@@ -52,8 +52,8 @@ require_once	'form.html';
 	/*Вызов метода клааса с перемнной*/
 	print '<strong>Цифровый контур изображения</strong> <br/>';
 	$converted_image_to_bin->imgToBin($my_image);
-    	/*Транспонирует матрицу*/
-   	 print '<strong>Траснпонируем контур </strong><br/>';
+     /*Транспонирует матрицу*/
+     print '<strong>Траснпонируем контур </strong><br/>';
 	$array_matrix=$converted_image_to_bin->transformMatrix();
 
 
@@ -61,8 +61,8 @@ require_once	'form.html';
 /*------------------------Заменим 01 на 1,-1 в массиве------------------------------------*/
 	foreach ($array_matrix as $k => $val)
 	{
-	    if ($val == '1')
-	    $pattern[$k] = '1';
+		if ($val == '1')
+		$pattern[$k] = '1';
 	    if ($val == '0')
 	    $pattern[$k] = '-1';
 	    $temp=$pattern[$k];
@@ -145,8 +145,8 @@ require_once	'form.html';
 
 	for ($j=0; $j  < count($vector); $j++) {
 
-   /*Посчитаем количество схождений текущго состояния функции активации и образцов в массиве.
-    * Найдем все схождения. Это позволит определить вес.*/
+		/*Посчитаем количество схождений текущго состояния функции активации и образцов в массиве.
+		* Найдем все схождения. Это позволит определить вес.*/
 		foreach ($result as $key => $arr)
 
 		{
@@ -154,6 +154,7 @@ require_once	'form.html';
 		$new_result[$j][]=count(array_intersect_assoc($arr, $vector[$j]));
 
 		}
+
 			/*Печатаем текущее состояние функции активации*/
 			foreach ($next_result[$i-1] as $k => $val)
 	{
@@ -161,38 +162,44 @@ require_once	'form.html';
 			if ($k%$widthVector+1==1)
 			print '<br/>';
 
+
 			if ($val == '-1')
 			print '0';
 
-			if ($val == '1')
+			if ($val == '1' && $k < 900)
 			print '1';
-			}
+
+
+	}
 			print '<br/>';
 
 
+
 	}
+	
+	
 
-	//print_r($new_result);
-	$vector_number=array_search(max($new_result), $new_result);
+			//print_r($new_result);
+			$vector_number=array_search(max($new_result), $new_result);
 
-	/*Печатаем результаты*/
-	print '<br/><strong> Печатаем наиболее вероятный образец </strong> <br/>';
-	print '<br/> Количество схождений образца с искомым вектором ' . max(max($new_result)). '<br/>';
-	print '<br/> Вектор номер ' .$vector_number.'<br/>';
+			/*Печатаем результаты*/
+			print '<br/><strong> Печатаем наиболее вероятный образец </strong> <br/>';
+			print '<br/> Количество схождений образца с искомым вектором ' . max(max($new_result)). '<br/>';
+			print '<br/> Вектор номер ' .$vector_number.'<br/>';
 
-	foreach ($vector[$vector_number] as $k => $val)
-	{
+			foreach ($vector[$vector_number] as $k => $val)
+			{
 
-	if ($k%$widthVector+1==1)
-	print '<br/>';
+			if ($k%$widthVector+1==1)
+			print '<br/>';
 
-	if ($val == '-1')
-	print '<strong>0</strong>';
+			if ($val == '-1')
+			print '<strong>0</strong>';
 
-	if ($val == '1')
-	print '<strong>1</strong>';
-	}
-	print '<br/>';
+			if ($val == '1')
+			print '<strong>1</strong>';
+			}
+			print '<br/>';
 
 
 ?>
