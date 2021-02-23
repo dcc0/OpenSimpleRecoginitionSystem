@@ -8,6 +8,7 @@
 	$img_dir = 'img'; //путь к изображениям
 	$image = 'm.png'; //изображение
 
+
 	if (!isset($_GET['go']) && empty($_GET['image']))
 	{
 	print 'Пример изображения ';
@@ -15,6 +16,7 @@
 	print '<br/>';
 	$image="$img_dir/$image";
 	}
+
 
 	if (isset($_GET['go']) && !empty($_GET['image']))
 	{
@@ -52,8 +54,8 @@
 	/*Вызов метода клааса с перемнной*/
 	print '<strong>Цифровый контур изображения</strong> <br/>';
 	$converted_image_to_bin->imgToBin($my_image);
-     /*Транспонирует матрицу*/
-     print '<strong>Траснпонируем контур </strong><br/>';
+    	 /*Транспонирует матрицу*/
+     	print '<strong>Траснпонируем контур </strong><br/>';
 	$array_matrix=$converted_image_to_bin->transformMatrix();
 
 
@@ -61,8 +63,8 @@
 /*------------------------Заменим 01 на 1,-1 в массиве------------------------------------*/
 	foreach ($array_matrix as $k => $val)
 	{
-		if ($val == '1')
-		$pattern[$k] = '1';
+	    if ($val == '1')
+	    $pattern[$k] = '1';
 	    if ($val == '0')
 	    $pattern[$k] = '-1';
 	    $temp=$pattern[$k];
@@ -127,7 +129,7 @@
 	$new_result=array();
 
 
-   /*Выводим цифровой образ хранимого сетью вектора*/
+   	/*Выводим цифровой образ хранимого сетью вектора*/
 	/*Вызов в цикле метода*/
 
 	print '<br/>Печатаем возможные образы (векторы умножены на матрицу)<br/>';
@@ -136,8 +138,8 @@
 
 	{
 
-		$next_result[$i] = 	$new_matrix->checkPattern($next_result[$i-1]);
-		$result[] = $next_result[$i];
+	$next_result[$i] = $new_matrix->checkPattern($next_result[$i-1]);
+	$result[] = $next_result[$i];
 
 	}
 
@@ -145,33 +147,34 @@
 
 	for ($j=0; $j  < count($vector); $j++) {
 
-		/*Посчитаем количество схождений текущго состояния функции активации и образцов в массиве.
-		* Найдем все схождения. Это позволит определить вес.*/
-		foreach ($result as $key => $arr)
+	/*Посчитаем количество схождений текущго состояния функции активации и образцов в массиве.
+	* Найдем все схождения. Это позволит определить вес.*/
+	foreach ($result as $key => $arr)
 
-		{
-
-		$new_result[$j][]=count(array_intersect_assoc($arr, $vector[$j]));
-
-		}
-
-			/*Печатаем текущее состояние функции активации*/
-			foreach ($next_result[$i-1] as $k => $val)
 	{
 
-			if ($k%$widthVector+1==1)
-			print '<br/>';
+	$new_result[$j][]=count(array_intersect_assoc($arr, $vector[$j]));
+
+	}
+
+	/*Печатаем текущее состояние функции активации*/
+	foreach ($next_result[$i-1] as $k => $val)
+	
+	{
+
+	if ($k%$widthVector+1==1)
+	print '<br/>';
 
 
-			if ($val == '-1')
-			print '0';
+	if ($val == '-1')
+	print '0';
 
-			if ($val == '1' && $k < 900)
-			print '1';
+	if ($val == '1' && $k < 900)
+	print '1';
 
 
 	}
-			print '<br/>';
+	print '<br/>';
 
 
 
