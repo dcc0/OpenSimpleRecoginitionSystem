@@ -26,6 +26,12 @@
 	print '<br/>';
 	}
 
+	/*Очистить таблицу векторов*/
+	if (isset($_POST['clearvectors']))
+    {
+    file_put_contents('vectors.txt', '');
+    }
+
 
 	/*Преобразование изображений*/
 	/*Изображение в формате png или jpg. Должно быть обязательно чёрно-белым.
@@ -46,16 +52,20 @@
 
 	/*Высота и ширина образца и искомого вектора*/
 	$widthMyImg = imagesx($my_image);
+	$heightMyImg = imagesy($my_image);
 	$widthVector = imagesx(imagecreatefrompng('img/m.png'));
 
+	/*Проверим высоту и ширину изображения*/
+	if ($widthMyImg != 30 && $heightMyImg != 30)
+	exit("<br/>Допускаются изображения 30х30 пикселей<br/>");
 
 	/*Новый объект класса*/
 	$converted_image_to_bin = new Convert_Image_To_01;
-	/*Вызов метода клааса с перемнной*/
+	/*Вызов метода клаcса с перемнной*/
 	print '<strong>Цифровый контур изображения</strong> <br/>';
 	$converted_image_to_bin->imgToBin($my_image);
-    	 /*Транспонирует матрицу*/
-     	print '<strong>Траснпонируем контур </strong><br/>';
+    /*Транспонирует матрицу*/
+    print '<strong>Траснпонируем контур </strong><br/>';
 	$array_matrix=$converted_image_to_bin->transformMatrix();
 
 
@@ -78,7 +88,7 @@
 	/*Обрежем запятую в конце*/
 	//$save_vector=substr($save_vector, 0, -1);
 
-	/*Запоминине вектора*/
+	/*Запоминие вектора*/
 	if (isset($_POST['save'])) {
 	file_put_contents($filevectors, $save_vector . "\r\n", FILE_APPEND);
 	}
@@ -159,7 +169,7 @@
 
 	/*Печатаем текущее состояние функции активации*/
 	foreach ($next_result[$i-1] as $k => $val)
-	
+
 	{
 
 	if ($k%$widthVector+1==1)
@@ -179,15 +189,15 @@
 
 
 	}
-	
-	
+
+
 
 			//print_r($new_result);
 			$vector_number=array_search(max($new_result), $new_result);
 
 			/*Печатаем результаты*/
 			print '<br/><strong> Печатаем наиболее вероятный образец </strong> <br/>';
-			print '<br/> Количество схождений образца с искомым вектором ' . max(max($new_result)). '<br/>';
+			print '<br/> Количество схождений образца с функцией активации ' . max(max($new_result)). '<br/>';
 			print '<br/> Вектор номер ' .$vector_number.'<br/>';
 
 			foreach ($vector[$vector_number] as $k => $val)
