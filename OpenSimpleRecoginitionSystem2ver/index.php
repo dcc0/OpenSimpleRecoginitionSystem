@@ -61,8 +61,8 @@ require_once	'form.html';
 /*------------------------Заменим 01 на 1,-1 в массиве------------------------------------*/
 	foreach ($array_matrix as $k => $val)
 	{
-		if ($val == '1')
-		$pattern[$k] = '1';
+	    if ($val == '1')
+	    $pattern[$k] = '1';
 	    if ($val == '0')
 	    $pattern[$k] = '-1';
 	    $temp=$pattern[$k];
