@@ -28,9 +28,9 @@
 
 	/*Очистить таблицу векторов*/
 	if (isset($_POST['clearvectors']))
-    {
-    file_put_contents('vectors.txt', '');
-    }
+   	 {
+   	 file_put_contents('vectors.txt', '');
+   	 }
 
 
 	/*Преобразование изображений*/
