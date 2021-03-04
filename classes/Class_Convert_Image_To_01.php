@@ -4,7 +4,8 @@
 	/*Класс преобразует изображение в матрицу  вида 01 и транспонирует.
 	 * 0 - соответствует фону, 1 - чёрному цвету. Следует использовать
 	 * черно-белые изображения формата png, с объектами чёрного цвета.
-	 * Возвращает контур изображения. This class transforms balck-white (png) image to a binary like 01.*/
+	 * Возвращает контур изображения. 
+	 This class transforms balck-white (png) image to a binary like 01.*/
 
 
 	class Convert_Image_To_01 {
