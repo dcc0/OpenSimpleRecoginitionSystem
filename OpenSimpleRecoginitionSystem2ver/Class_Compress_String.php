@@ -4,10 +4,10 @@
 	/*Класс для сокращения строки.
 	 * Основан на том, что маленькие (в нижнем регистре) 
 	 * буквы английского алфавита, начиная с d,
-	 * имеет коды в ASSCI выше 100
+	 * имеет коды в ASCII выше 100
 	 * This class reduces a string. It uses an idea
 	 * that codes of the small letters after d are  100+
-	 * in a range of ASSCI*/
+	 * in a range of ASCII*/
 	 
 	class Compress_String 
 	
